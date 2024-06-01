@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  soulmask:
+    restart: always
+    container_name: soulmask
+    image: soulmaskserver
+    volumes:
+      - ./server:/app
+    environment:
+      - PORT=${PORT}
+      - BACKUP=${BACKUP}
+      - MULTIHOME=${MULTIHOME}
+      - SAVING=${SAVING}
+      - PLAYERS=${PLAYERS}
+      - SERVER_NAME=${SERVER_NAME}
+      - SERVER_PASSWORD=${SERVER_PASSWORD}
+    networks:
+      - default
+    ports:
+      - "7777:7777/udp"
+      - "27015:27015/udp"
